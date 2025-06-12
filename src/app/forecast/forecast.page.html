@@ -1,0 +1,144 @@
+<ion-header [translucent]="true" class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="header-title">
+        <ion-icon name="calendar-outline" class="header-icon"></ion-icon>
+        Previsão 7 Dias
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="forecast-content">
+  <!-- Background animado -->
+  <div class="forecast-background"></div>
+  
+  <!-- Header da cidade -->
+  <div class="city-header glass-effect" *ngIf="localizacaoAtual; else noLocation">
+    <h1>{{ localizacaoAtual }}</h1>
+    <p>Previsão estendida para os próximos dias</p>
+  </div>
+
+  <ng-template #noLocation>
+    <div class="no-location-message glass-effect">
+    </div>
+  </ng-template>
+
+  <!-- Loading -->
+  <div class="loading-container" *ngIf="carregando">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Carregando previsão...</p>
+  </div>
+
+  <!-- Lista de previsões -->
+  <div class="forecast-list" *ngIf="!carregando && previsao5Dias.length > 0">
+    <ion-card 
+      class="forecast-card glass-effect" 
+      *ngFor="let previsao of previsoesPaginadas; let i = index; trackBy: trackByFn"
+      [class.animate-item]="true"
+      [style.animation-delay]="(i * 0.1) + 's'">
+      
+      <ion-card-content>
+        <div class="forecast-item">
+          <!-- Data -->
+          <div class="date-section">
+            <h2>{{ previsao.data | diaSemana }}</h2>
+            <p>{{ previsao.data | date:'dd/MM' }}</p>
+          </div>
+          
+          <!-- Ícone do clima -->
+          <div class="weather-icon-section">
+            <img 
+              [src]="getIconeClima(previsao.icone)" 
+              [alt]="previsao.descricao"
+              class="weather-icon">
+          </div>
+          
+          <!-- Temperaturas -->
+          <div class="temperature-section">
+            <div class="temp-main">
+              <span class="temp-value">{{ previsao.temperatura | temperatura }} °C</span>
+            </div>
+            <div class="temp-range">
+              <span class="temp-min">{{ previsao.tempMin | temperatura }} °C</span>
+              <span class="temp-separator">/</span>
+              <span class="temp-max">{{ previsao.tempMax | temperatura }} °C</span>
+            </div>
+          </div>
+          
+          <!-- Descrição -->
+          <div class="description-section">
+            <p class="weather-description">{{ previsao.descricao | titlecase }}</p>
+          </div>
+          
+          <!-- Detalhes adicionais -->
+          <div class="details-section">
+            <div class="detail-item">
+              <ion-icon name="water-outline"></ion-icon>
+              <span>{{ previsao.umidade }}%</span>
+            </div>
+            <div class="detail-item">
+              <ion-icon name="speedometer-outline"></ion-icon>
+              <span>{{ previsao.velocidadeVento | number:'1.1-1' }} m/s</span>
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Paginação -->
+  <div class="pagination-container glass-effect" *ngIf="!carregando && totalPaginas > 1">
+    <div class="pagination-controls">
+      <ion-button 
+        fill="clear" 
+        [disabled]="paginaAtual === 1"
+        (click)="mudarPagina(paginaAtual - 1)">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+        Anterior
+      </ion-button>
+      
+      <div class="page-info">
+        <span>{{ paginaAtual }} de {{ totalPaginas }}</span>
+      </div>
+      
+      <ion-button 
+        fill="clear" 
+        [disabled]="paginaAtual === totalPaginas"
+        (click)="mudarPagina(paginaAtual + 1)">
+        Próximo
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Estado vazio -->
+  <div class="empty-state" *ngIf="!carregando && previsao5Dias.length === 0">
+    <ion-card class="empty-card glass-effect">
+      <ion-card-content>
+        <div class="empty-content">
+          <ion-icon name="cloud-offline-outline" class="empty-icon"></ion-icon>
+          <h2>Nenhuma previsão encontrada</h2>
+          <p>Não foi possível carregar a previsão para esta cidade.</p>
+          <ion-button fill="outline" (click)="carregarPrevisao(localizacaoAtual)">
+            <ion-icon name="refresh-outline" slot="start"></ion-icon>
+            Tentar novamente
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Pull to refresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="atualizar($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="crescent"
+      refreshingText="Atualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
+</ion-content>

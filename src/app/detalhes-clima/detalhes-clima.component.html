@@ -1,0 +1,21 @@
+<div *ngIf="climaAtual" class="glass-card weather-details">
+  <div class="detail-card">
+    <div class="detail-label">Visibilidade</div>
+    <div class="detail-value">{{ (climaAtual.visibility / 1000) | number:'1.1-1' }} km</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="detail-label">Umidade</div>
+    <div class="detail-value">{{ climaAtual.main.humidity }}%</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="detail-label">Pressão</div>
+    <div class="detail-value">{{ climaAtual.main.pressure }} hPa</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="detail-label">Vento</div>
+    <div class="detail-value">{{ climaAtual.wind.speed }} m/s</div>
+  </div>
+</div>

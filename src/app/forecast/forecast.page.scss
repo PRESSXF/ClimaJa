@@ -1,0 +1,101 @@
+/* Ajuste das cores para combinar com o tema do site */
+
+:host {
+  --ion-background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.forecast-content {
+  background: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.city-header {
+  background: var(--background-card);
+  color: var(--text-primary);
+  border-radius: var(--card-border-radius);
+  padding: 16px;
+  margin: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.forecast-card {
+  background: var(--background-card);
+  color: var(--text-primary);
+  border-radius: var(--card-border-radius);
+  margin: 12px;
+  padding: 16px;
+  box-shadow: var(--glass-shadow);
+}
+
+.forecast-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-section, .weather-icon-section, .temperature-section, .description-section, .details-section {
+  color: var(--text-primary);
+}
+
+.temperature-section .temp-main {
+  font-weight: 700;
+  font-size: 1.5em;
+  color: var(--text-primary);
+}
+
+.temperature-section .temp-range {
+  color: var(--text-secondary);
+}
+
+.description-section {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.details-section .detail-item {
+  background: var(--background-secondary);
+  border-radius: var(--card-border-radius-small);
+  padding: 4px 8px;
+  margin: 0 4px;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+.details-section .detail-item ion-icon {
+  margin-right: 4px;
+  color: var(--ion-color-primary);
+}
+
+.pagination-container {
+  background: var(--background-card);
+  border-radius: var(--card-border-radius);
+  margin: 12px;
+  padding: 8px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.pagination-controls ion-button {
+  color: var(--ion-color-primary);
+}
+
+.empty-state, .loading-container {
+  color: var(--text-primary);
+}
+
+.empty-card {
+  background: var(--background-card);
+  color: var(--text-primary);
+  border-radius: var(--card-border-radius);
+  padding: 16px;
+  margin: 12px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 3em;
+  margin-bottom: 8px;
+}

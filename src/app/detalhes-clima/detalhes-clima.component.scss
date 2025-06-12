@@ -1,0 +1,23 @@
+.weather-details {
+  margin-top: 20px;
+}
+
+.detail-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #eee;
+}
+
+.detail-value {
+  color: #fff;
+}

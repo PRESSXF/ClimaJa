@@ -1,0 +1,422 @@
+:root {
+  /** primary - azul céu harmonioso **/
+  --ion-color-primary: #2196F3;
+  --ion-color-primary-rgb: 33, 150, 243;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #1976D2;
+  --ion-color-primary-tint: #42A5F5;
+
+  /** secondary - verde água complementar **/
+  --ion-color-secondary: #00BCD4;
+  --ion-color-secondary-rgb: 0, 188, 212;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0097A7;
+  --ion-color-secondary-tint: #26C6DA;
+
+  /** tertiary - laranja suave para contraste **/
+  --ion-color-tertiary: #FF9800;
+  --ion-color-tertiary-rgb: 255, 152, 0;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #F57C00;
+  --ion-color-tertiary-tint: #FFB74D;
+
+  /** success - verde natural **/
+  --ion-color-success: #4CAF50;
+  --ion-color-success-rgb: 76, 175, 80;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #388E3C;
+  --ion-color-success-tint: #66BB6A;
+
+  /** warning - amarelo dourado **/
+  --ion-color-warning: #FFC107;
+  --ion-color-warning-rgb: 255, 193, 7;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #FFA000;
+  --ion-color-warning-tint: #FFD54F;
+
+  /** danger - vermelho suave **/
+  --ion-color-danger: #F44336;
+  --ion-color-danger-rgb: 244, 67, 54;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #D32F2F;
+  --ion-color-danger-tint: #EF5350;
+
+  /** weather gradients harmonizados **/
+  --gradient-main: linear-gradient(135deg, #2196F3 0%, #21CBF3 100%);
+  --gradient-sunny: linear-gradient(135deg, #FFD54F 0%, #FF9800 100%);
+  --gradient-rainy: linear-gradient(135deg, #42A5F5 0%, #1976D2 100%);
+  --gradient-cloudy: linear-gradient(135deg, #90A4AE 0%, #607D8B 100%);
+  --gradient-night: linear-gradient(135deg, #37474F 0%, #263238 100%);
+  --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+
+  /** temperatura com cores proporcionais **/
+  --color-temp-freezing: #E3F2FD;  /* Azul muito claro */
+  --color-temp-cold: #2196F3;      /* Azul */
+  --color-temp-cool: #00BCD4;      /* Ciano */
+  --color-temp-mild: #4CAF50;      /* Verde */
+  --color-temp-warm: #FFC107;      /* Amarelo */
+  --color-temp-hot: #FF9800;       /* Laranja */
+  --color-temp-very-hot: #F44336;  /* Vermelho */
+  
+  /** glass effect melhorado **/
+  --glass-background: rgba(255, 255, 255, 0.12);
+  --glass-background-strong: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --glass-shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.15);
+  --glass-blur: blur(12px);
+
+  /** animations suaves **/
+  --transition-speed: 0.3s;
+  --transition-speed-fast: 0.15s;
+  --transition-speed-slow: 0.5s;
+  --animation-curve: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-curve-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /** card styles proporcionais **/
+  --card-border-radius: 16px;
+  --card-border-radius-small: 12px;
+  --card-border-radius-large: 20px;
+  --card-padding: 20px;
+  --card-padding-small: 16px;
+  --card-margin: 12px;
+
+  /** text styles hierárquicos **/
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --text-muted: #BDBDBD;
+  --text-inverse: #ffffff;
+  --text-inverse-secondary: rgba(255, 255, 255, 0.87);
+  --text-inverse-muted: rgba(255, 255, 255, 0.6);
+
+  /** background colors **/
+  --background-primary: #FAFAFA;
+  --background-secondary: #F5F5F5;
+  --background-card: #ffffff;
+  --background-overlay: rgba(0, 0, 0, 0.5);
+
+  /** qualidade do ar com cores intuitivas **/
+  --air-quality-good: #4CAF50;
+  --air-quality-fair: #8BC34A;
+  --air-quality-moderate: #FFC107;
+  --air-quality-poor: #FF9800;
+  --air-quality-very-poor: #F44336;
+
+  /** índice UV com gradação **/
+  --uv-low: #4CAF50;
+  --uv-moderate: #FFC107;
+  --uv-high: #FF9800;
+  --uv-very-high: #F44336;
+  --uv-extreme: #9C27B0;
+
+  /** Menu lateral - cores e efeitos **/
+  --menu-background: linear-gradient(180deg, #E3F2FD 0%, #F0F8FF 50%, #FAFAFA 100%);
+  --menu-background-solid: rgba(227, 242, 253, 0.95);
+  --menu-text-primary: #1565C0;
+  --menu-text-secondary: #1976D2;
+  --menu-text-muted: #64B5F6;
+  --menu-icon-color: var(--ion-color-primary);
+  --menu-border: rgba(33, 150, 243, 0.2);
+  --menu-item-hover: rgba(33, 150, 243, 0.1);
+  --menu-item-active: var(--ion-color-primary);
+  --menu-item-active-text: #ffffff;
+  --menu-header-gradient: linear-gradient(135deg, #2196F3 0%, #00BCD4 100%);
+  --menu-toggle-background: rgba(33, 150, 243, 0.1);
+  --menu-toggle-border: rgba(33, 150, 243, 0.3);
+  --menu-toggle-active: var(--ion-color-primary);
+  --menu-shadow: 0 8px 32px rgba(33, 150, 243, 0.15);
+
+  /* Define light theme colors */
+  --app-background: #f0f0f0;
+  --app-text-color: #333;
+  --card-background: #fff;
+  --card-text-color: #333;
+}
+
+/* Define dark theme colors */
+body.dark {
+  --ion-color-primary: #90CAF9;
+  --ion-color-primary-rgb: 144, 202, 249;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #5D99C6;
+  --ion-color-primary-tint: #8AC7F2;
+
+  --ion-color-secondary: #80DEEA;
+  --ion-color-secondary-rgb: 128, 222, 234;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #4DBDBD;
+  --ion-color-secondary-tint: #79DFE9;
+
+  --ion-color-tertiary: #FFB74D;
+  --ion-color-tertiary-rgb: 255, 183, 77;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #F59800;
+  --ion-color-tertiary-tint: #FFD54F;
+
+  --ion-color-success: #81C784;
+  --ion-color-success-rgb: 129, 199, 132;
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: #519657;
+  --ion-color-success-tint: #7BC87B;
+
+  --ion-color-warning: #FFD54F;
+  --ion-color-warning-rgb: 255, 213, 79;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #F5B700;
+  --ion-color-warning-tint: #FFD54F;
+
+  --ion-color-danger: #E57373;
+  --ion-color-danger-rgb: 229, 115, 115;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #C62828;
+  --ion-color-danger-tint: #EF5350;
+  
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18, 18, 18;
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255, 255, 255;
+  --ion-border-color: rgba(255, 255, 255, 0.12);
+  --ion-item-background: #1e1e1e;
+  --ion-card-background: #1e1e1e;
+
+  /** text colors para tema escuro **/
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #808080;
+
+  /** background colors para tema escuro **/
+  --background-primary: #121212;
+  --background-secondary: #1e1e1e;
+  --background-card: #1e1e1e;
+
+  /** glass effect para tema escuro **/
+  --glass-background: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  /** Menu lateral - tema escuro **/
+  --menu-background: linear-gradient(180deg, #0D47A1 0%, #1565C0 50%, #1976D2 100%);
+  --menu-text-primary: #E3F2FD;
+  --menu-text-secondary: #BBDEFB;
+  --menu-text-muted: #90CAF9;
+  --menu-icon-color: #64B5F6;
+  --menu-border: rgba(227, 242, 253, 0.2);
+
+  /** gradients para tema escuro **/
+  --gradient-main: linear-gradient(135deg, #1976D2 0%, #0D47A1 100%);
+    /* Dark theme-specific variables */
+    --app-background: #121212;
+    --app-text-color: #eee;
+    --card-background: #333;
+    --card-text-color: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.dark) {
+    --ion-background-color: #121212;
+    --ion-background-color-rgb: 18, 18, 18;
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+    --ion-border-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Other Styles */
+
+// Animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Custom Ionic Overrides */
+
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+ion-card {
+  border-radius: var(--card-border-radius);
+  margin: var(--card-margin);
+  padding: var(--card-padding);
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-speed) var(--animation-curve);
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: var(--ion-border-color);
+}
+
+ion-button {
+  --box-shadow: none;
+  --border-radius: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+/* Weather Icons */
+
+.weather-icon {
+  width: 64px;
+  height: 64px;
+  animation: pulse 2s infinite;
+}
+
+/* Temperature Display */
+
+.temperature {
+  font-size: 3em;
+  font-weight: 300;
+  color: var(--text-primary);
+  
+  &.cold { color: var(--color-temp-cold); }
+  &.mild { color: var(--color-temp-mild); }
+  &.hot { color: var(--color-temp-hot); }
+}
+
+/* Weather Cards */
+
+.weather-card {
+  animation: slideUp 0.5s var(--animation-curve);
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+}
+
+/* Loading Animation */
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  
+  ion-spinner {
+    --color: var(--ion-color-primary);
+    transform-origin: center;
+    animation: pulse 1.5s infinite;
+  }
+}
+
+/* Menu Lateral Styles */
+
+ion-menu {
+  --background: var(--menu-background);
+  --width: 280px;
+  
+  ion-header {
+    background: var(--menu-header-gradient);
+    
+    ion-toolbar {
+      --background: transparent;
+      --color: #ffffff;
+      --min-height: 120px;
+      --padding-top: 20px;
+      --padding-bottom: 20px;
+    }
+  }
+  
+  ion-content {
+    --background: var(--menu-background);
+    
+    ion-list {
+      background: transparent;
+      padding: 0;
+      
+      ion-item {
+        --background: transparent;
+        --color: var(--menu-text-primary);
+        --padding-start: 16px;
+        --padding-end: 16px;
+        --min-height: 48px;
+        margin: 4px 8px;
+        border-radius: 8px;
+        
+        &:hover {
+          --background: var(--menu-item-hover);
+        }
+        
+        &.selected {
+          --background: var(--menu-item-active);
+          --color: var(--menu-item-active-text);
+          
+          ion-icon {
+            color: var(--menu-item-active-text);
+          }
+        }
+        
+        ion-icon {
+          color: var(--menu-icon-color);
+          margin-right: 16px;
+        }
+      }
+    }
+  }
+  
+  ion-footer {
+    background: var(--menu-background);
+    border-top: 1px solid var(--menu-border);
+    padding: 16px;
+    
+    ion-text {
+      color: var(--menu-text-muted);
+      font-size: 12px;
+    }
+  }
+}
+
+/* Menu Toggle Button */
+
+.menu-button {
+  margin: 8px;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --background: var(--menu-toggle-background);
+  --border-radius: 8px;
+  border: 1px solid var(--menu-toggle-border);
+  
+  &:hover {
+    --background: var(--menu-toggle-active);
+  }
+  
+  ion-icon {
+    font-size: 24px;
+  }
+}

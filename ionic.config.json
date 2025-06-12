@@ -1,0 +1,7 @@
+{
+  "name": "climaja-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

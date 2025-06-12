@@ -1,0 +1,99 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ cidade }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Loading -->
+  <div *ngIf="carregando" class="loading-container">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <p class="loading-text">Carregando dados detalhados...</p>
+  </div>
+
+  <!-- Erro -->
+  <div *ngIf="erro" class="error-container glass-card">
+    <ion-icon name="alert-circle-outline" color="danger" size="large"></ion-icon>
+    <h3>Ops! Algo deu errado!</h3>
+    <p>{{ erro }}</p>
+    <ion-button (click)="carregarDados()" fill="solid" color="primary">
+      <ion-icon name="refresh-outline" slot="start"></ion-icon>
+      Tentar novamente!
+    </ion-button>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div *ngIf="climaAtual && previsao && !carregando" class="content-container animate-in">
+    <!-- Clima Atual -->
+    <div class="current-weather glass-card">
+      <div class="temp-container">
+        <div class="temp-info">
+          <h1>{{ climaAtual.main.temp | number:'1.0-0' }}°C</h1>
+          <p class="description">{{ climaAtual.weather[0].description | titlecase }}</p>
+          <p class="feels-like">Sensação térmica de {{ climaAtual.main.feels_like | number:'1.0-0' }}°C</p>
+        </div>
+        <div class="weather-icon">
+          <img [src]="getIconeClima(climaAtual.weather[0].icon)" [alt]="climaAtual.weather[0].description">
+        </div>
+      </div>
+    </div>
+
+    <!-- Detalhes -->
+    <div class="details-section glass-card">
+      <h2>Detalhes do Tempo!</h2>
+      <div class="details-grid">
+        <div class="detail-item">
+          <ion-icon name="water-outline" color="primary"></ion-icon>
+          <div class="detail-info">
+            <span class="label">Umidade:</span>
+            <span class="value">{{ climaAtual.main.humidity }}%</span>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <ion-icon name="speedometer-outline" color="primary"></ion-icon>
+          <div class="detail-info">
+            <span class="label">Pressão:</span>
+            <span class="value">{{ climaAtual.main.pressure }} hPa</span>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <ion-icon name="wind-outline" color="primary"></ion-icon>
+          <div class="detail-info">
+            <span class="label">Velocidade do Vento:</span>
+            <span class="value">{{ climaAtual.wind.speed }} m/s</span>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <ion-icon name="eye-outline" color="primary"></ion-icon>
+          <div class="detail-info">
+            <span class="label">Visibilidade:</span>
+            <span class="value">{{ climaAtual.visibility / 1000 }} km</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Previsão 5 dias -->
+    <div class="forecast-section glass-card">
+      <h2>Previsão para os Próximos Dias!</h2>
+      <div class="forecast-scroll">
+        <div *ngFor="let dia of previsao.list; trackBy: trackByFn" class="forecast-item">
+          <span class="day">{{ formatarData(dia.dt) | date:'EEE' | uppercase }}</span>
+          <span class="date">{{ formatarData(dia.dt) | date:'dd/MM' }}</span>
+          <img [src]="getIconeClima(dia.weather[0].icon)" [alt]="dia.weather[0].description">
+          <div class="forecast-temps">
+            <span class="max">{{ dia.main.temp_max | number:'1.0-0' }}°</span>
+            <span class="min">{{ dia.main.temp_min | number:'1.0-0' }}°</span>
+          </div>
+          <span class="forecast-desc">{{ dia.weather[0].description }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

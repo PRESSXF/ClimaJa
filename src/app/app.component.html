@@ -1,0 +1,78 @@
+<ion-app>
+  <!-- Menu lateral com design melhorado -->
+  <ion-menu contentId="main-content" type="overlay" class="custom-menu">
+      <ion-header class="menu-header">
+        <ion-toolbar color="transparent">
+          <ion-title class="menu-title">
+            <div class="menu-logo">
+              <span class="weather-emoji">🌤️</span>
+              <span class="app-name">ClimaJá</span>
+            </div>
+            <p class="menu-subtitle">Previsão do Tempo</p>
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="menu-content">
+        <!-- Navegação principal -->
+        <div class="menu-section">
+          <h3 class="section-title">Navegação</h3>
+          <ion-list class="menu-list">
+            <ion-menu-toggle auto-hide="false">
+              <ion-item 
+                routerLink="/home" 
+                routerDirection="root" 
+                routerLinkActive="selected"
+                class="menu-item">
+                <ion-icon 
+                  slot="start" 
+                  name="home-outline"
+                  class="menu-icon">
+                </ion-icon>
+                <ion-label class="menu-label">Início</ion-label>
+              </ion-item>
+              
+              <ion-item 
+                routerLink="/forecast" 
+                routerDirection="root" 
+                routerLinkActive="selected"
+                class="menu-item">
+                <ion-icon 
+                  slot="start" 
+                  name="calendar-outline"
+                  class="menu-icon">
+                </ion-icon>
+                <ion-label class="menu-label">Previsão</ion-label>
+              </ion-item>
+              
+              <ion-item 
+                routerLink="/historico" 
+                routerDirection="root" 
+                routerLinkActive="selected"
+                class="menu-item">
+                <ion-icon 
+                  slot="start" 
+                  name="time-outline"
+                  class="menu-icon">
+                </ion-icon>
+                <ion-label class="menu-label">Histórico</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </div>
+
+        <!-- Informações do app -->
+        <div class="menu-footer">
+          <ion-item lines="none" class="app-info">
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>
+              <h3>ClimaJá v1.0</h3>
+              <p>Desenvolvido com Ionic & Angular</p>
+            </ion-label>
+          </ion-item>
+        </div>
+      </ion-content>
+    </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

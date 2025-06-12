@@ -1,0 +1,54 @@
+.current-weather {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+
+  .location-section {
+    text-align: center;
+
+    .city-name {
+      font-size: 2em;
+      margin-bottom: 5px;
+    }
+
+    .temperature-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .temperature-display {
+        font-size: 3em;
+        margin-right: 10px;
+      }
+
+      .weather-icon-container {
+        img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+
+    .weather-description {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .feels-like {
+      font-size: 0.9em;
+    }
+
+    .details-section {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+
+      .detail-item {
+        font-size: 0.8em;
+      }
+    }
+  }
+}

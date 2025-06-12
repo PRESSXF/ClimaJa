@@ -1,0 +1,5 @@
+<ion-list>
+<ion-item *ngFor="let sugestao of sugestoes; trackBy: trackByFn" (click)="selecionarSugestao(sugestao)">
+    {{ sugestao }}
+  </ion-item>
+</ion-list>

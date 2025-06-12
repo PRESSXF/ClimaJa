@@ -1,0 +1,1 @@
+{"ast":null,"code":"itensPorPagina: number = 10; // 10 itens por página = 3 páginas para 30 itens total\ntotalItens: number = 0;","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

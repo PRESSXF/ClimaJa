@@ -1,0 +1,220 @@
+/* Estilos globais do ClimaJá inspirado no app Tempo da Apple */
+
+/* Importar fonte SF Pro Display ou equivalente */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+  /* Cores */
+  --background-gradient: linear-gradient(180deg, #1F1F1F 0%, #2C2C2C 100%);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --accent-blue: #0A84FF;
+  
+  /* Tipografia */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Estilos base */
+body, html, ion-app {
+  font-family: var(--font-family);
+  background: var(--background-gradient);
+  color: var(--text-primary);
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+ion-content {
+  --background: transparent;
+  --padding-start: 20px;
+  --padding-end: 20px;
+}
+
+/* Header personalizado */
+ion-header {
+  --background: rgba(31, 31, 31, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+ion-toolbar {
+  --background: transparent;
+  --color: var(--text-primary);
+  --border-color: transparent;
+  --min-height: 44px;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+ion-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* Cards com efeito vidro */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  padding: 20px;
+  margin: 10px 0;
+  transition: transform 0.3s ease;
+}
+
+.glass-card:active {
+  transform: scale(0.98);
+}
+
+/* Temperatura principal */
+.temperature-display {
+  font-size: 96px;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin: 20px 0;
+}
+
+/* Cidade e descrição */
+.city-name {
+  font-size: 34px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.weather-description {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+/* Campo de busca */
+ion-searchbar {
+  --background: rgba(28, 28, 30, 0.6);
+  --color: var(--text-primary);
+  --placeholder-color: var(--text-tertiary);
+  --icon-color: var(--text-secondary);
+  --border-radius: 10px;
+  --box-shadow: none;
+  padding: 0;
+  height: 36px;
+}
+
+/* Lista de previsões */
+.forecast-list {
+  margin-top: 20px;
+}
+
+.forecast-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.forecast-item:last-child {
+  border-bottom: none;
+}
+
+.forecast-day {
+  flex: 1;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.forecast-temp {
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+/* Ícones do tempo */
+.weather-icon {
+  font-size: 24px;
+  margin: 0 15px;
+}
+
+/* Detalhes do clima */
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.detail-card {
+  background: var(--glass-bg);
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+}
+
+.detail-label {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.detail-value {
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Estados de loading */
+ion-skeleton-text {
+  --background: rgba(255, 255, 255, 0.1);
+  --border-radius: 16px;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  .temperature-display {
+    font-size: 72px;
+  }
+  
+  .city-name {
+    font-size: 28px;
+  }
+  
+  .weather-details {
+    grid-template-columns: 1fr;
+  }
+}

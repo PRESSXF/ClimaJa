@@ -1,0 +1,42 @@
+<div *ngIf="climaAtual" class="current-weather">
+  <!-- Localização e Temperatura -->
+  <div class="location-section">
+    <h1 class="city-name">{{ climaAtual.name }}</h1>
+    <div class="temperature-section">
+      <span class="temperature-display">{{ climaAtual.main.temp | number:'1.0-0' }}°C</span>
+      <div class="weather-icon-container">
+        <img 
+          [src]="getIconeClima(climaAtual.weather[0].icon)" 
+          [alt]="climaAtual.weather[0].description"
+          class="main-weather-icon"
+        >
+      </div>
+    </div>
+    <p class="weather-description">
+      {{ climaAtual.weather[0].description | titlecase }}
+    </p>
+    <p class="feels-like">
+      Sensação térmica: {{ climaAtual.main.feels_like | number:'1.0-0' }}°C
+    </p>
+    <div class="details-section">
+      <div class="detail-item">
+        Umidade: <span>{{ climaAtual.main.humidity }}% de umidade</span>
+      </div>
+      <div class="detail-item">
+        Vento: <span>{{ climaAtual.wind.speed }} m/s</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="forecast-section">
+    <div class="forecast-list">
+      <div class="forecast-item" *ngFor="let forecast of forecastData">
+        <p class="forecast-date">{{ forecast.dt_txt | date:'dd/MM' }}</p>
+        <img [src]="getIconeClima(forecast.weather[0].icon)" [alt]="forecast.weather[0].description">
+        <p class="forecast-temp">{{ forecast.main.temp | number:'1.0-0' }}°C</p>
+        <button (click)="verDetalhes(forecast)">Ver Detalhes</button>
+      </div>
+    </div>
+  </div>
+  <button (click)="onDefinirLocalizacaoAtual()">Definir como Localização Atual!</button>
+</div>

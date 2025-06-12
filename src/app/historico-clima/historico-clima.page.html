@@ -1,0 +1,159 @@
+<ion-header [translucent]="true" class="custom-header">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="header-title">
+        <ion-icon name="time" class="header-icon"></ion-icon>
+        Histórico
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="limparHistorico()" *ngIf="historico.length > 0">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="history-content">
+  <!-- Background gradient -->
+  <div class="history-background"></div>
+
+  <div class="container">
+    <!-- Histórico vazio -->
+    <ion-card *ngIf="historico.length === 0" class="empty-state-card glass-effect">
+      <ion-card-content>
+        <div class="empty-content">
+          <div class="empty-icon-container">
+            <ion-icon name="time" class="empty-icon"></ion-icon>
+          </div>
+          <h2>No searches performed!!!</h2>
+          <p>Your weather searches will appear here automatically.</p>
+          <ion-button routerLink="/home" class="action-button">
+            <ion-icon name="search" slot="start"></ion-icon>
+            Make the first search!!!
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Lista do histórico -->
+    <div *ngIf="historico.length > 0" class="history-container">
+      <!-- Card de informações -->
+      <ion-card class="info-card glass-effect">
+        <ion-card-content>
+          <div class="info-content">
+            <div class="info-item">
+              <ion-icon name="list"></ion-icon>
+              <span>{{ totalItens }} buscas realizadas!</span>
+            </div>
+            <div class="info-item">
+              <ion-icon name="document"></ion-icon>
+              <span>Page {{ paginaAtual }} of {{ Math.ceil(totalItens / itensPorPagina) }}</span>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Lista de itens -->
+      <div class="history-list">
+<ion-card 
+          *ngFor="let item of historico; let i = index; trackBy: trackByHistoricoFn" 
+          class="history-item glass-effect"
+          [class.animate-item]="true"
+          [style.animation-delay]="i * 0.1 + 's'"
+          appHighlight="#ffffff20">
+          
+          <ion-card-content>
+            <div class="item-content">
+              <!-- Informações principais -->
+              <div class="main-info">
+                <div class="city-info">
+                  <h2 class="city-name">{{ item.cidade }}</h2>
+                  <p class="search-time">
+                    <ion-icon name="time-outline"></ion-icon>
+                    {{ formatarData(item.data) }}
+                  </p>
+                </div>
+                <div class="weather-info">
+                  <img 
+                    [src]="'https://openweathermap.org/img/wn/' + item.icone + '@2x.png'"
+                    [alt]="item.descricao"
+                    class="weather-icon">
+                  <div class="temperature-display">
+                    <span class="temp-value">{{ item.temperatura | number:'1.0-0' }}</span>
+                    <span class="temp-unit">°C</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Descrição do clima -->
+              <div class="weather-description">
+                <ion-chip class="weather-chip">
+                  <ion-icon [name]="getWeatherIcon(item.descricao)"></ion-icon>
+                  <ion-label>{{ item.descricao | titlecase }}</ion-label>
+                </ion-chip>
+              </div>
+              <!-- Ações -->
+              <div class="action-buttons">
+                <ion-button 
+                  fill="clear" 
+                  class="details-btn"
+                  (click)="verDetalhes(item.cidade)">
+                  <ion-icon name="information-circle"></ion-icon>
+                  <span>Detalhes</span>
+                </ion-button>
+                <ion-button 
+                  fill="clear" 
+                  color="danger"
+                  class="delete-btn"
+                  (click)="removerItem(i)">
+                  <ion-icon name="trash"></ion-icon>
+                  <span>Remover</span>
+                </ion-button>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <!-- Paginação customizada -->
+       <div class="pagination-container glass-effect" *ngIf="totalItens > itensPorPagina">
+        <div class="pagination-controls">
+          <ion-button 
+            fill="clear" 
+            [disabled]="paginaAtual === 1"
+            (click)="onPageChange(paginaAtual - 1)">
+            <ion-icon name="chevron-back"></ion-icon>
+            Previous
+          </ion-button>
+
+          <div class="page-numbers">
+<span 
+              *ngFor="let page of getPageNumbers(); trackBy: trackByPageNumbersFn" 
+              [class.active]="page === paginaAtual"
+              (click)="onPageChange(page)">
+              {{ page }}
+            </span>
+          </div>
+
+          <ion-button 
+            fill="clear" 
+            [disabled]="paginaAtual === Math.ceil(totalItens / itensPorPagina)"
+            (click)="onPageChange(paginaAtual + 1)">
+            Next
+            <ion-icon name="chevron-forward"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating button to clear history -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="historico.length > 0">
+    <ion-fab-button color="danger" (click)="confirmClearHistory()">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
